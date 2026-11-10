@@ -1,353 +1,245 @@
-grammar Pcl_C4 ;
+grammar Pcl_C4;
 
-@header 
-{
+@header {
     package intermediate.antlr4;
-    
-    import java.util.HashMap;
-    import intermediate.symtab.SymtabEntry;
-    import intermediate.type.Typespec;
 }
 
-program           : programHeader block '.' ;
-programHeader     : PROGRAM identifier programParameters? ';' ; 
-programParameters : '(' identifier ( ',' identifier )* ')' ;
-
-identifier      locals [ SymtabEntry entry = null,
-                         Typespec typespec = null,
-                         Object value = null
-                       ] 
-    : IDENTIFIER ;
-
-block : declarations compoundStatement ;
-
-// ============
-// Declarations
-// ============
-
-declarations : ( constantsPart ';' )? ( typesPart ';' )? 
-               ( variablesPart ';')? ( procedureAndFunctionsPart ';' )? ;
-                
-constantsPart           : CONST constantDefinitionsList ;
-constantDefinitionsList : constantDefinition ( ';' constantDefinition )* ;
-
-constantDefinition : identifier '=' constant ;
-
-constant        locals [ Typespec typespec = null, 
-                         Object value = null
-                       ]  
-    : sign? constantIdentifier  # constantSignedIdentifier
-    | sign? integerConstant     # constantSignedInteger
-    | sign? realConstant        # constantSignedReal
-    | characterConstant         # constantCharacter
-    | stringConstant            # constantString
-    | booleanConstant           # constantBoolean
+program
+    : CLASS identifier COLON separator*
+      (importDeclaration separator*)*
+      (functionDeclaration separator*)*
+      mainMethod (separator* functionDeclaration)*
+      separator* PROGRAM_END separator* EOF
     ;
 
-sign : '-' | '+' ;
-
-typesPart           : TYPE typeDefinitionsList ;
-typeDefinitionsList : typeDefinition ( ';' typeDefinition )* ;
-
-typeDefinition : identifier '=' typeSpecification ;
-
-typeSpecification   locals [ Typespec typespec = null ]
-    : typeIdentifier
-    | ordinalType
-    | structuredType 
+importDeclaration
+    : TIM_CHEESE qualifiedName (DOT STAR)? SEMI?
     ;
 
-typeIdentifier : identifier ;
-
-ordinalType         locals [ Typespec typespec = null ] 
-    : enumeratedType
-    | subrangeType
-    ;
-    
-structuredType      locals [ Typespec typespec = null ]
-    : arrayType 
-    | recordType
+qualifiedName
+    : identifier (DOT identifier)*
     ;
 
-enumeratedType      locals [ Typespec typespec = null ] 
-    : '(' identifier ( ',' identifier )* ')' ;
-
-subrangeType        locals [ Typespec typespec = null ] 
-    : constant '..' constant ;
-
-arrayType           locals [ Typespec typespec = null ] 
-    : PACKED? ARRAY '[' dimensionList ']' OF elmtType ;
-    
-dimensionList : indexType ( ',' indexType )* ;
-indexType     : typeIdentifier | ordinalType ;
-elmtType      : typeSpecification;
-
-recordType          locals [ Typespec typespec = null ]   
-    : RECORD recordFields ';'? END ;
-recordFields : variableDeclarationsList ;
-           
-variableDeclarations   : variableIdentifierList ':' typeSpecification ;
-variableIdentifierList : identifier ( ',' identifier )* ;
-    
-procedureAndFunctionsPart : procFuncDefinition ( ';' procFuncDefinition)* ;
-procFuncDefinition        : ( procedureHead | functionHead ) ';' block ;
-procedureHead             : PROCEDURE identifier parameters? ;
-functionHead              : FUNCTION  identifier parameters? 
-                                            ':' typeIdentifier ;
-
-parameters                : '(' parameterDeclarationsList ')' ;
-parameterDeclarationsList : parameterDeclarations 
-                                        ( ';' parameterDeclarations )* ;
-parameterDeclarations     : VAR? parameterIdentifierList ':' typeIdentifier ;
-parameterIdentifierList   : identifier ( ',' identifier )* ;
-
-variablesPart            : VAR variableDeclarationsList ;
-variableDeclarationsList : variableDeclarations 
-                                        ( ';' variableDeclarations )* ;
-
-// ==========
-// Statements
-// ==========
-
-compoundStatement : BEGIN statementList END ;
-statementList     : statement ( ';' statement )* ;
-
-statement : compoundStatement
-          | assignmentStatement
-          | ifStatement
-          | caseStatement
-          | repeatStatement
-          | whileStatement
-          | forStatement
-          | procedureCallStatement
-          | writeStatement
-          | writelnStatement
-          | readStatement
-          | readlnStatement
-          | emptyStatement
-          ;
-
-assignmentStatement : variable ':=' expression ;
-
-ifStatement    : IF expression THEN trueStatement 
-                             ( ELSE falseStatement )? ;
-trueStatement  : statement ;
-falseStatement : statement ;
-
-caseStatement 
-    locals [ HashMap<Integer, StatementContext> jumpTable = null
-           ]
-    : CASE expression OF caseBranchList END ;
-    
-caseBranchList   : caseBranch ( ';' caseBranch )* ;
-caseBranch       : caseConstantList ':' statement | ;
-caseConstantList : caseConstant ( ',' caseConstant )* ;
-
-caseConstant    locals [ Typespec typespec = null, 
-                         int value = 0
-                       ]
-    : constant ;
-
-repeatStatement : REPEAT statementList UNTIL expression ;
-whileStatement  : WHILE expression DO statement ;
-
-forStatement : FOR variable ':=' expression 
-                    ( TO | DOWNTO ) expression DO statement ;
-
-procedureCallStatement : procedureName ( '(' argumentList ')' )? ;
-
-procedureName   locals [ SymtabEntry entry = null ] 
-    : identifier ;
-
-argumentList : argument ( ',' argument )* ;
-argument     : expression ;
-
-writeStatement   : WRITE writeArguments ;
-writelnStatement : WRITELN writeArguments? ;
-
-writeArguments
-    : '(' writeArgument (',' writeArgument)* ')' ;
-    
-writeArgument    : expression (':' format)? ;
-format           : width (':' precision)? ;
-width            : sign? integerConstant ;
-precision        : integerConstant ;
-
-readStatement   : READ readArguments ;
-readlnStatement : READLN readArguments ;
-readArguments   : '(' variable ( ',' variable )* ')' ;
-
-emptyStatement    : /* empty */ ;
-
-// ===========
-// Expressions
-// ===========
-
-expression          locals [ Typespec typespec = null ] 
-    : simpleExpression (relOp simpleExpression)? ;
-    
-simpleExpression    locals [ Typespec typespec = null ] 
-    : sign? term (addOp term)* ;
-    
-term                locals [ Typespec typespec = null ]
-    : factor (mulOp factor)* ;
-       
-relOp : '=' | '<>' | '<' | '<=' | '>' | '>=' ;
-addOp : '+' | '-' | OR ;
-mulOp : '*' | '/' | DIV | MOD | AND ;
-
-factor              locals [ Typespec typespec = null ] 
-    : variable              # factorVariable
-    | integerConstant       # factorIntegerConstant   
-    | realConstant          # factorRealConstant   
-    | characterConstant     # factorCharacterConstant
-    | stringConstant        # factorStringConstant
-    | booleanConstant       # factorBooleanConstant   
-    | functionCall          # factorFunctionCall
-    | NOT factor            # factorNot
-    | '(' expression ')'    # factorParens
+mainMethod
+    : MAIN COLON block
     ;
 
-variable            locals [ Typespec typespec = null, 
-                             SymtabEntry entry = null
-                           ] 
-    : identifier modifier* ;
+functionDeclaration
+    : RIZZ returnType identifier LPAREN parameterList? RPAREN COLON block
+    ;
 
-modifier  : '[' indexList ']' 
-          | '.' field
-          ;
-          
-indexList : index ( ',' index )* ;
-index     : expression ; 
+returnType
+    : valueType
+    | SIGMA
+    ;
 
-field               locals [ Typespec typespec = null, 
-                             SymtabEntry entry = null
-                           ]     
-    : identifier ;
+valueType
+    : DABLOONS
+    | CHAT
+    ;
 
-functionCall : functionName '(' argumentList ')' ;
+parameterList
+    : parameter (COMMA parameter)*
+    ;
 
-functionName        locals [ Typespec typespec = null, 
-                             SymtabEntry entry = null
-                           ] 
-    : identifier ;
+parameter
+    : valueType identifier
+    ;
 
-constantIdentifier  locals [ Typespec typespec = null,
-                             Object value = null
-                           ]
-    : identifier ;
+block
+    : separator* (statement (separator+ statement)*)? separator* FADE
+    ;
 
-integerConstant     locals [ Typespec typespec = null,
-                             Object value = null
-                           ] 
-    : INTEGER ;
-    
-realConstant        locals [ Typespec typespec = null,
-                             Object value = null
-                           ]    
-    : REAL;
+separator
+    : NEWLINE
+    | SEMI
+    ;
 
-characterConstant   locals [ Typespec typespec = null,
-                             Object value = null
-                           ] 
-    : CHARACTER ;
-    
-stringConstant      locals [ Typespec typespec = null,
-                             Object value = null
-                           ]   
-    : STRING ;
-    
-booleanConstant     locals [ Typespec typespec = null,
-                             Object value = null
-                           ]
-    : TRUE | FALSE ;
+statement
+    : variableDeclaration
+    | constantDeclaration
+    | assignmentStatement
+    | ifStatement
+    | whileStatement
+    | forStatement
+    | breakStatement
+    | continueStatement
+    | exitStatement
+    | returnStatement
+    | printStatement
+    | callStatement
+    ;
 
-// ======
-// Tokens
-// ======
+variableDeclaration
+    : BET valueType identifier (assignmentOperator expression)?
+    ;
 
-AND       : A N D ;
-ARRAY     : A R R A Y ;
-BEGIN     : B E G I N ;
-CASE      : C A S E ;
-CONST     : C O N S T ;
-DIV       : D I V ;
-DO        : D O ;
-DOWNTO    : D O W N T O ;
-ELSE      : E L S E ;
-END       : E N D ;
-FALSE     : F A L S E ;
-FOR       : F O R ;
-FUNCTION  : F U N C T I O N ;
-IF        : I F ;
-MOD       : M O D ;
-NOT       : N O T ;
-OF        : O F ;
-OR        : O R ;
-PACKED    : P A C K E D ;
-PROCEDURE : P R O C E D U R E ;
-PROGRAM   : P R O G R A M ;
-READ      : R E A D ;
-READLN    : R E A D L N ;
-RECORD    : R E C O R D ;
-REPEAT    : R E P E A T ;
-THEN      : T H E N ;
-TO        : T O ;
-TRUE      : T R U E ;
-TYPE      : T Y P E ;
-UNTIL     : U N T I L ;
-VAR       : V A R ;
-WHILE     : W H I L E ;
-WITH      : W I T H ;
-WRITE     : W R I T E ;
-WRITELN   : W R I T E L N ;
+constantDeclaration
+    : CONST_DECL valueType identifier assignmentOperator expression
+    ;
 
-IDENTIFIER : LETTER ( LETTER | DIGIT )*;
-INTEGER    : DIGITS ;
+assignmentStatement
+    : identifier assignmentOperator expression
+    ;
 
-REAL : DIGITS '.' DIGITS
-     | DIGITS ('e' | 'E') ('+' | '-')? DIGITS
-     | DIGITS '.' DIGITS ('e' | 'E') ('+' | '-')? DIGITS
-     ;
+assignmentOperator
+    : IS_GIVING
+    | ASSIGN
+    ;
 
-LETTER : [a-zA-Z] ;
-DIGIT  : [0-9];
-DIGITS : DIGIT+ ;
+ifStatement
+    : SIX LPAREN expression RPAREN COLON block
+      (SEVEN SIX LPAREN expression RPAREN COLON block)*
+      (SEVEN COLON block)?
+    ;
 
-CHARACTER : QUOTE STRING_CHAR QUOTE ;
-STRING    : QUOTE STRING_CHAR* QUOTE ;
+whileStatement
+    : WHILE LPAREN expression RPAREN COLON block
+    ;
 
-WHITESPACE : [ \n\r\t]+ -> skip ; 
-COMMENT    : '{' COMMENT_CHAR* '}' -> skip ;
+forStatement
+    : FOR LPAREN forInitializer? SEMI expression? SEMI assignmentStatement? RPAREN COLON block
+    ;
 
-fragment A : ('a' | 'A') ;
-fragment B : ('b' | 'B') ;
-fragment C : ('c' | 'C') ;
-fragment D : ('d' | 'D') ;
-fragment E : ('e' | 'E') ;
-fragment F : ('f' | 'F') ;
-fragment G : ('g' | 'G') ;
-fragment H : ('h' | 'H') ;
-fragment I : ('i' | 'I') ;
-fragment J : ('j' | 'J') ;
-fragment K : ('k' | 'K') ;
-fragment L : ('l' | 'L') ;
-fragment M : ('m' | 'M') ;
-fragment N : ('n' | 'N') ;
-fragment O : ('o' | 'O') ;
-fragment P : ('p' | 'P') ;
-fragment Q : ('q' | 'Q') ;
-fragment R : ('r' | 'R') ;
-fragment S : ('s' | 'S') ;
-fragment T : ('t' | 'T') ;
-fragment U : ('u' | 'U') ;
-fragment V : ('v' | 'V') ;
-fragment W : ('w' | 'W') ;
-fragment X : ('x' | 'X') ;
-fragment Y : ('y' | 'Y') ;
-fragment Z : ('z' | 'Z') ;
+forInitializer
+    : variableDeclaration
+    | assignmentStatement
+    ;
 
-fragment QUOTE          : '\'' ;
-fragment CHARACTER_CHAR : ~'\'' ;
-fragment STRING_CHAR    : QUOTE QUOTE | CHARACTER_CHAR ;
-fragment COMMENT_CHAR   : ~'}' ;
+breakStatement
+    : OHIO
+    ;
+
+continueStatement
+    : TONKA_JAHARI
+    ;
+
+exitStatement
+    : SKIBIDI
+    ;
+
+returnStatement
+    : YEET expression?
+    ;
+
+printStatement
+    : YO_GURT LPAREN argumentList? RPAREN
+    ;
+
+callStatement
+    : functionCall
+    ;
+
+argumentList
+    : expression (COMMA expression)*
+    ;
+
+functionCall
+    : JOHN_PORK identifier LPAREN argumentList? RPAREN
+    ;
+
+expression
+    : additiveExpression (relationalOperator additiveExpression)*
+    ;
+
+relationalOperator
+    : MOGGING
+    | MOGGED_BY
+    | NO_CAP
+    | LOWK_MOGGED_BY
+    | LOWK_MOGGING
+    | CAP
+    | GT
+    | LT
+    | EQ
+    | LE
+    | GE
+    | NE
+    ;
+
+additiveExpression
+    : multiplicativeExpression ((AURA_GAIN | AURA_LOSS | PLUS | MINUS) multiplicativeExpression)*
+    ;
+
+multiplicativeExpression
+    : unaryExpression ((AURA_FARM | CHOPPED_CHEESE | STAR | SLASH) unaryExpression)*
+    ;
+
+unaryExpression
+    : (PLUS | MINUS) unaryExpression
+    | primaryExpression
+    ;
+
+primaryExpression
+    : INTEGER
+    | STRING
+    | functionCall
+    | identifier
+    | LPAREN expression RPAREN
+    ;
+
+identifier
+    : IDENTIFIER
+    ;
+
+// Multiword keywords are kept as single lexer tokens; spaces or tabs may separate their words.
+CLASS       : 'quandale' [ \t]+ 'dingle';
+PROGRAM_END : 'thank' [ \t]+ 'you' [ \t]+ 'thank' [ \t]+ 'you' [ \t]+ 'thank' [ \t]+ 'you';
+MAIN        : 'tung' [ \t]+ 'tung' [ \t]+ 'sahur';
+IS_GIVING   : 'is' [ \t]+ 'giving';
+CONST_DECL  : '24k' [ \t]+ 'gold' [ \t]+ 'labubu';
+AURA_FARM   : 'aura' [ \t]+ 'farm';
+CHOPPED_CHEESE : 'chopped' [ \t]+ 'cheese';
+AURA_GAIN   : 'aura' [ \t]+ 'gain';
+AURA_LOSS   : 'aura' [ \t]+ 'loss';
+MOGGED_BY   : 'mogged' [ \t]+ 'by';
+LOWK_MOGGED_BY : 'lowk' [ \t]+ 'mogged' [ \t]+ 'by';
+LOWK_MOGGING : 'lowk' [ \t]+ 'mogging';
+JOHN_PORK   : 'john' [ \t]+ 'pork';
+YO_GURT     : 'yo' [ \t]+ 'gurt';
+TIM_CHEESE  : 'tim' [ \t]+ 'cheese';
+TONKA_JAHARI : 'tonka' [ \t]+ 'jahari';
+FADE        : 'fade';
+
+RIZZ        : 'rizz';
+SIGMA       : 'sigma';
+DABLOONS    : 'dabloons';
+CHAT        : 'chat';
+BET         : 'bet';
+SIX         : 'six';
+SEVEN       : 'seven';
+WHILE       : 'tralalero' [ \t]+ 'tralala';
+FOR         : 'ballerina' [ \t]+ 'cappuccina';
+OHIO        : 'ohio';
+SKIBIDI     : 'skibidi';
+YEET        : 'yeet';
+MOGGING     : 'mogging';
+NO_CAP      : 'no' [ \t]+ 'cap';
+CAP         : 'cap';
+
+GT          : '>';
+LT          : '<';
+EQ          : '==';
+LE          : '<=';
+GE          : '>=';
+NE          : '!=';
+PLUS        : '+';
+MINUS       : '-';
+STAR        : '*';
+SLASH       : '/';
+ASSIGN      : '=';
+LPAREN      : '(';
+RPAREN      : ')';
+COLON       : ':';
+COMMA       : ',';
+SEMI        : ';';
+DOT         : '.';
+
+LINE_COMMENT
+    : 'mewing' ([ \t] ~[\r\n]*)? -> skip
+    ;
+NEWLINE     : '\r'? '\n';
+WHITESPACE  : [ \t\f]+ -> skip;
+INTEGER     : [0-9]+;
+STRING      : '"' ( '\\' . | ~["\\\r\n] )* '"';
+IDENTIFIER  : [a-zA-Z_] [a-zA-Z_0-9]*;
