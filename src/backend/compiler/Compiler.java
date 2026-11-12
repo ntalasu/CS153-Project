@@ -7,9 +7,9 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.Interval;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import intermediate.antlr4.Pcl_C4BaseVisitor;
-import intermediate.antlr4.Pcl_C4Parser;
-import intermediate.antlr4.Pcl_C4Parser.*;
+import intermediate.antlr4.BrainrotBaseVisitor;
+import intermediate.antlr4.BrainrotParser;
+import intermediate.antlr4.BrainrotParser.*;
 import intermediate.symtab.Predefined;
 import intermediate.symtab.SymtabEntry;
 import intermediate.type.Typespec;
@@ -33,7 +33,7 @@ import static intermediate.semantics.Semantics.*;
  *   java/lang/ArithmeticException (divide by zero) -> "chopped cheese!"
  *   any other RuntimeException                     -> "sussy baka!"
  */
-public class Compiler extends Pcl_C4BaseVisitor<Object>
+public class Compiler extends BrainrotBaseVisitor<Object>
 {
     private static final String PRINT_STREAM  = "java/io/PrintStream";
     private static final String STRING        = "java/lang/String";
@@ -526,7 +526,7 @@ public class Compiler extends Pcl_C4BaseVisitor<Object>
                 code.emit(INVOKEVIRTUAL, STRING + "/concat(" + STRING_DESC + ")" + STRING_DESC);
                 localStack.decrease(1);
             }
-            else if ((op == Pcl_C4Parser.AURA_GAIN) || (op == Pcl_C4Parser.PLUS))
+            else if ((op == BrainrotParser.AURA_GAIN) || (op == BrainrotParser.PLUS))
             {
                 code.emit(IADD);
             }
@@ -549,7 +549,7 @@ public class Compiler extends Pcl_C4BaseVisitor<Object>
             int op = ((TerminalNode) ctx.getChild(i)).getSymbol().getType();
             visit(ctx.getChild(i + 1));
 
-            if ((op == Pcl_C4Parser.AURA_FARM) || (op == Pcl_C4Parser.STAR))
+            if ((op == BrainrotParser.AURA_FARM) || (op == BrainrotParser.STAR))
             {
                 code.emit(IMUL);
             }
@@ -656,19 +656,19 @@ public class Compiler extends Pcl_C4BaseVisitor<Object>
         code.emitComment(String.format("%03d %s", ctx.getStart().getLine(), text));
     }
 
-    private static boolean isEq(int op) { return op == Pcl_C4Parser.NO_CAP || op == Pcl_C4Parser.EQ; }
-    private static boolean isNe(int op) { return op == Pcl_C4Parser.CAP    || op == Pcl_C4Parser.NE; }
+    private static boolean isEq(int op) { return op == BrainrotParser.NO_CAP || op == BrainrotParser.EQ; }
+    private static boolean isNe(int op) { return op == BrainrotParser.CAP    || op == BrainrotParser.NE; }
 
     /** Branch for comparing two ints already on the stack. */
     private static Instruction intCompare(int op)
     {
         switch (op)
         {
-            case Pcl_C4Parser.MOGGING:        case Pcl_C4Parser.GT: return IF_ICMPGT;
-            case Pcl_C4Parser.MOGGED_BY:      case Pcl_C4Parser.LT: return IF_ICMPLT;
-            case Pcl_C4Parser.LOWK_MOGGING:   case Pcl_C4Parser.GE: return IF_ICMPGE;
-            case Pcl_C4Parser.LOWK_MOGGED_BY: case Pcl_C4Parser.LE: return IF_ICMPLE;
-            case Pcl_C4Parser.NO_CAP:         case Pcl_C4Parser.EQ: return IF_ICMPEQ;
+            case BrainrotParser.MOGGING:        case BrainrotParser.GT: return IF_ICMPGT;
+            case BrainrotParser.MOGGED_BY:      case BrainrotParser.LT: return IF_ICMPLT;
+            case BrainrotParser.LOWK_MOGGING:   case BrainrotParser.GE: return IF_ICMPGE;
+            case BrainrotParser.LOWK_MOGGED_BY: case BrainrotParser.LE: return IF_ICMPLE;
+            case BrainrotParser.NO_CAP:         case BrainrotParser.EQ: return IF_ICMPEQ;
             default:                                                return IF_ICMPNE;
         }
     }
@@ -678,11 +678,11 @@ public class Compiler extends Pcl_C4BaseVisitor<Object>
     {
         switch (op)
         {
-            case Pcl_C4Parser.MOGGING:        case Pcl_C4Parser.GT: return IFGT;
-            case Pcl_C4Parser.MOGGED_BY:      case Pcl_C4Parser.LT: return IFLT;
-            case Pcl_C4Parser.LOWK_MOGGING:   case Pcl_C4Parser.GE: return IFGE;
-            case Pcl_C4Parser.LOWK_MOGGED_BY: case Pcl_C4Parser.LE: return IFLE;
-            case Pcl_C4Parser.NO_CAP:         case Pcl_C4Parser.EQ: return IFEQ;
+            case BrainrotParser.MOGGING:        case BrainrotParser.GT: return IFGT;
+            case BrainrotParser.MOGGED_BY:      case BrainrotParser.LT: return IFLT;
+            case BrainrotParser.LOWK_MOGGING:   case BrainrotParser.GE: return IFGE;
+            case BrainrotParser.LOWK_MOGGED_BY: case BrainrotParser.LE: return IFLE;
+            case BrainrotParser.NO_CAP:         case BrainrotParser.EQ: return IFEQ;
             default:                                                return IFNE;
         }
     }

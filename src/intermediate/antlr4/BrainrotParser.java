@@ -1,4 +1,4 @@
-// Generated from Pcl_C4.g4 by ANTLR 4.13.2
+// Generated from Brainrot.g4 by ANTLR 4.13.2
 
     package intermediate.antlr4;
 
@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
-public class Pcl_C4Parser extends Parser {
+public class BrainrotParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -113,7 +113,7 @@ public class Pcl_C4Parser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Pcl_C4.g4"; }
+	public String getGrammarFileName() { return "Brainrot.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -124,23 +124,23 @@ public class Pcl_C4Parser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public Pcl_C4Parser(TokenStream input) {
+	public BrainrotParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ProgramContext extends ParserRuleContext {
-		public TerminalNode CLASS() { return getToken(Pcl_C4Parser.CLASS, 0); }
+		public TerminalNode CLASS() { return getToken(BrainrotParser.CLASS, 0); }
 		public IdentifierContext identifier() {
 			return getRuleContext(IdentifierContext.class,0);
 		}
-		public TerminalNode COLON() { return getToken(Pcl_C4Parser.COLON, 0); }
+		public TerminalNode COLON() { return getToken(BrainrotParser.COLON, 0); }
 		public MainMethodContext mainMethod() {
 			return getRuleContext(MainMethodContext.class,0);
 		}
-		public TerminalNode PROGRAM_END() { return getToken(Pcl_C4Parser.PROGRAM_END, 0); }
-		public TerminalNode EOF() { return getToken(Pcl_C4Parser.EOF, 0); }
+		public TerminalNode PROGRAM_END() { return getToken(BrainrotParser.PROGRAM_END, 0); }
+		public TerminalNode EOF() { return getToken(BrainrotParser.EOF, 0); }
 		public List<SeparatorContext> separator() {
 			return getRuleContexts(SeparatorContext.class);
 		}
@@ -165,7 +165,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitProgram(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -333,20 +333,20 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ImportDeclarationContext extends ParserRuleContext {
-		public TerminalNode TIM_CHEESE() { return getToken(Pcl_C4Parser.TIM_CHEESE, 0); }
+		public TerminalNode TIM_CHEESE() { return getToken(BrainrotParser.TIM_CHEESE, 0); }
 		public QualifiedNameContext qualifiedName() {
 			return getRuleContext(QualifiedNameContext.class,0);
 		}
-		public TerminalNode DOT() { return getToken(Pcl_C4Parser.DOT, 0); }
-		public TerminalNode STAR() { return getToken(Pcl_C4Parser.STAR, 0); }
-		public TerminalNode SEMI() { return getToken(Pcl_C4Parser.SEMI, 0); }
+		public TerminalNode DOT() { return getToken(BrainrotParser.DOT, 0); }
+		public TerminalNode STAR() { return getToken(BrainrotParser.STAR, 0); }
+		public TerminalNode SEMI() { return getToken(BrainrotParser.SEMI, 0); }
 		public ImportDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_importDeclaration; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitImportDeclaration(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitImportDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -405,9 +405,9 @@ public class Pcl_C4Parser extends Parser {
 		public IdentifierContext identifier(int i) {
 			return getRuleContext(IdentifierContext.class,i);
 		}
-		public List<TerminalNode> DOT() { return getTokens(Pcl_C4Parser.DOT); }
+		public List<TerminalNode> DOT() { return getTokens(BrainrotParser.DOT); }
 		public TerminalNode DOT(int i) {
-			return getToken(Pcl_C4Parser.DOT, i);
+			return getToken(BrainrotParser.DOT, i);
 		}
 		public QualifiedNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -415,7 +415,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_qualifiedName; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitQualifiedName(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitQualifiedName(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -462,8 +462,8 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class MainMethodContext extends ParserRuleContext {
-		public TerminalNode MAIN() { return getToken(Pcl_C4Parser.MAIN, 0); }
-		public TerminalNode COLON() { return getToken(Pcl_C4Parser.COLON, 0); }
+		public TerminalNode MAIN() { return getToken(BrainrotParser.MAIN, 0); }
+		public TerminalNode COLON() { return getToken(BrainrotParser.COLON, 0); }
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
@@ -473,7 +473,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_mainMethod; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitMainMethod(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitMainMethod(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -505,16 +505,16 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionDeclarationContext extends ParserRuleContext {
-		public TerminalNode RIZZ() { return getToken(Pcl_C4Parser.RIZZ, 0); }
+		public TerminalNode RIZZ() { return getToken(BrainrotParser.RIZZ, 0); }
 		public ReturnTypeContext returnType() {
 			return getRuleContext(ReturnTypeContext.class,0);
 		}
 		public IdentifierContext identifier() {
 			return getRuleContext(IdentifierContext.class,0);
 		}
-		public TerminalNode LPAREN() { return getToken(Pcl_C4Parser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(Pcl_C4Parser.RPAREN, 0); }
-		public TerminalNode COLON() { return getToken(Pcl_C4Parser.COLON, 0); }
+		public TerminalNode LPAREN() { return getToken(BrainrotParser.LPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(BrainrotParser.RPAREN, 0); }
+		public TerminalNode COLON() { return getToken(BrainrotParser.COLON, 0); }
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
@@ -527,7 +527,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionDeclaration; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitFunctionDeclaration(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitFunctionDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -581,14 +581,14 @@ public class Pcl_C4Parser extends Parser {
 		public ValueTypeContext valueType() {
 			return getRuleContext(ValueTypeContext.class,0);
 		}
-		public TerminalNode SIGMA() { return getToken(Pcl_C4Parser.SIGMA, 0); }
+		public TerminalNode SIGMA() { return getToken(BrainrotParser.SIGMA, 0); }
 		public ReturnTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_returnType; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitReturnType(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitReturnType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -632,15 +632,15 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ValueTypeContext extends ParserRuleContext {
-		public TerminalNode DABLOONS() { return getToken(Pcl_C4Parser.DABLOONS, 0); }
-		public TerminalNode CHAT() { return getToken(Pcl_C4Parser.CHAT, 0); }
+		public TerminalNode DABLOONS() { return getToken(BrainrotParser.DABLOONS, 0); }
+		public TerminalNode CHAT() { return getToken(BrainrotParser.CHAT, 0); }
 		public ValueTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_valueType; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitValueType(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitValueType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -683,9 +683,9 @@ public class Pcl_C4Parser extends Parser {
 		public ParameterContext parameter(int i) {
 			return getRuleContext(ParameterContext.class,i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(Pcl_C4Parser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(BrainrotParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(Pcl_C4Parser.COMMA, i);
+			return getToken(BrainrotParser.COMMA, i);
 		}
 		public ParameterListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -693,7 +693,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_parameterList; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitParameterList(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitParameterList(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -750,7 +750,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_parameter; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitParameter(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitParameter(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -780,7 +780,7 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class BlockContext extends ParserRuleContext {
-		public TerminalNode FADE() { return getToken(Pcl_C4Parser.FADE, 0); }
+		public TerminalNode FADE() { return getToken(BrainrotParser.FADE, 0); }
 		public List<SeparatorContext> separator() {
 			return getRuleContexts(SeparatorContext.class);
 		}
@@ -799,7 +799,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_block; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitBlock(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitBlock(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -899,15 +899,15 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class SeparatorContext extends ParserRuleContext {
-		public TerminalNode NEWLINE() { return getToken(Pcl_C4Parser.NEWLINE, 0); }
-		public TerminalNode SEMI() { return getToken(Pcl_C4Parser.SEMI, 0); }
+		public TerminalNode NEWLINE() { return getToken(BrainrotParser.NEWLINE, 0); }
+		public TerminalNode SEMI() { return getToken(BrainrotParser.SEMI, 0); }
 		public SeparatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_separator; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitSeparator(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitSeparator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -986,7 +986,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1099,7 +1099,7 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class VariableDeclarationContext extends ParserRuleContext {
-		public TerminalNode BET() { return getToken(Pcl_C4Parser.BET, 0); }
+		public TerminalNode BET() { return getToken(BrainrotParser.BET, 0); }
 		public ValueTypeContext valueType() {
 			return getRuleContext(ValueTypeContext.class,0);
 		}
@@ -1118,7 +1118,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_variableDeclaration; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitVariableDeclaration(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitVariableDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1163,7 +1163,7 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstantDeclarationContext extends ParserRuleContext {
-		public TerminalNode CONST_DECL() { return getToken(Pcl_C4Parser.CONST_DECL, 0); }
+		public TerminalNode CONST_DECL() { return getToken(BrainrotParser.CONST_DECL, 0); }
 		public ValueTypeContext valueType() {
 			return getRuleContext(ValueTypeContext.class,0);
 		}
@@ -1182,7 +1182,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_constantDeclaration; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitConstantDeclaration(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitConstantDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1233,7 +1233,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_assignmentStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitAssignmentStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitAssignmentStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1265,15 +1265,15 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class AssignmentOperatorContext extends ParserRuleContext {
-		public TerminalNode IS_GIVING() { return getToken(Pcl_C4Parser.IS_GIVING, 0); }
-		public TerminalNode ASSIGN() { return getToken(Pcl_C4Parser.ASSIGN, 0); }
+		public TerminalNode IS_GIVING() { return getToken(BrainrotParser.IS_GIVING, 0); }
+		public TerminalNode ASSIGN() { return getToken(BrainrotParser.ASSIGN, 0); }
 		public AssignmentOperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_assignmentOperator; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitAssignmentOperator(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitAssignmentOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1310,13 +1310,13 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class IfStatementContext extends ParserRuleContext {
-		public List<TerminalNode> SIX() { return getTokens(Pcl_C4Parser.SIX); }
+		public List<TerminalNode> SIX() { return getTokens(BrainrotParser.SIX); }
 		public TerminalNode SIX(int i) {
-			return getToken(Pcl_C4Parser.SIX, i);
+			return getToken(BrainrotParser.SIX, i);
 		}
-		public List<TerminalNode> LPAREN() { return getTokens(Pcl_C4Parser.LPAREN); }
+		public List<TerminalNode> LPAREN() { return getTokens(BrainrotParser.LPAREN); }
 		public TerminalNode LPAREN(int i) {
-			return getToken(Pcl_C4Parser.LPAREN, i);
+			return getToken(BrainrotParser.LPAREN, i);
 		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
@@ -1324,13 +1324,13 @@ public class Pcl_C4Parser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public List<TerminalNode> RPAREN() { return getTokens(Pcl_C4Parser.RPAREN); }
+		public List<TerminalNode> RPAREN() { return getTokens(BrainrotParser.RPAREN); }
 		public TerminalNode RPAREN(int i) {
-			return getToken(Pcl_C4Parser.RPAREN, i);
+			return getToken(BrainrotParser.RPAREN, i);
 		}
-		public List<TerminalNode> COLON() { return getTokens(Pcl_C4Parser.COLON); }
+		public List<TerminalNode> COLON() { return getTokens(BrainrotParser.COLON); }
 		public TerminalNode COLON(int i) {
-			return getToken(Pcl_C4Parser.COLON, i);
+			return getToken(BrainrotParser.COLON, i);
 		}
 		public List<BlockContext> block() {
 			return getRuleContexts(BlockContext.class);
@@ -1338,9 +1338,9 @@ public class Pcl_C4Parser extends Parser {
 		public BlockContext block(int i) {
 			return getRuleContext(BlockContext.class,i);
 		}
-		public List<TerminalNode> SEVEN() { return getTokens(Pcl_C4Parser.SEVEN); }
+		public List<TerminalNode> SEVEN() { return getTokens(BrainrotParser.SEVEN); }
 		public TerminalNode SEVEN(int i) {
-			return getToken(Pcl_C4Parser.SEVEN, i);
+			return getToken(BrainrotParser.SEVEN, i);
 		}
 		public List<SeparatorContext> separator() {
 			return getRuleContexts(SeparatorContext.class);
@@ -1354,7 +1354,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_ifStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitIfStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitIfStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1464,13 +1464,13 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class WhileStatementContext extends ParserRuleContext {
-		public TerminalNode WHILE() { return getToken(Pcl_C4Parser.WHILE, 0); }
-		public TerminalNode LPAREN() { return getToken(Pcl_C4Parser.LPAREN, 0); }
+		public TerminalNode WHILE() { return getToken(BrainrotParser.WHILE, 0); }
+		public TerminalNode LPAREN() { return getToken(BrainrotParser.LPAREN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode RPAREN() { return getToken(Pcl_C4Parser.RPAREN, 0); }
-		public TerminalNode COLON() { return getToken(Pcl_C4Parser.COLON, 0); }
+		public TerminalNode RPAREN() { return getToken(BrainrotParser.RPAREN, 0); }
+		public TerminalNode COLON() { return getToken(BrainrotParser.COLON, 0); }
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
@@ -1480,7 +1480,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_whileStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitWhileStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitWhileStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1518,14 +1518,14 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ForStatementContext extends ParserRuleContext {
-		public TerminalNode FOR() { return getToken(Pcl_C4Parser.FOR, 0); }
-		public TerminalNode LPAREN() { return getToken(Pcl_C4Parser.LPAREN, 0); }
-		public List<TerminalNode> SEMI() { return getTokens(Pcl_C4Parser.SEMI); }
+		public TerminalNode FOR() { return getToken(BrainrotParser.FOR, 0); }
+		public TerminalNode LPAREN() { return getToken(BrainrotParser.LPAREN, 0); }
+		public List<TerminalNode> SEMI() { return getTokens(BrainrotParser.SEMI); }
 		public TerminalNode SEMI(int i) {
-			return getToken(Pcl_C4Parser.SEMI, i);
+			return getToken(BrainrotParser.SEMI, i);
 		}
-		public TerminalNode RPAREN() { return getToken(Pcl_C4Parser.RPAREN, 0); }
-		public TerminalNode COLON() { return getToken(Pcl_C4Parser.COLON, 0); }
+		public TerminalNode RPAREN() { return getToken(BrainrotParser.RPAREN, 0); }
+		public TerminalNode COLON() { return getToken(BrainrotParser.COLON, 0); }
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
@@ -1544,7 +1544,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitForStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitForStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1627,7 +1627,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forInitializer; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitForInitializer(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitForInitializer(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1670,14 +1670,14 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class BreakStatementContext extends ParserRuleContext {
-		public TerminalNode OHIO() { return getToken(Pcl_C4Parser.OHIO, 0); }
+		public TerminalNode OHIO() { return getToken(BrainrotParser.OHIO, 0); }
 		public BreakStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_breakStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitBreakStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitBreakStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1705,14 +1705,14 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ContinueStatementContext extends ParserRuleContext {
-		public TerminalNode TONKA_JAHARI() { return getToken(Pcl_C4Parser.TONKA_JAHARI, 0); }
+		public TerminalNode TONKA_JAHARI() { return getToken(BrainrotParser.TONKA_JAHARI, 0); }
 		public ContinueStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_continueStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitContinueStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitContinueStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1740,14 +1740,14 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExitStatementContext extends ParserRuleContext {
-		public TerminalNode SKIBIDI() { return getToken(Pcl_C4Parser.SKIBIDI, 0); }
+		public TerminalNode SKIBIDI() { return getToken(BrainrotParser.SKIBIDI, 0); }
 		public ExitStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_exitStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitExitStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitExitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1775,7 +1775,7 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ReturnStatementContext extends ParserRuleContext {
-		public TerminalNode YEET() { return getToken(Pcl_C4Parser.YEET, 0); }
+		public TerminalNode YEET() { return getToken(BrainrotParser.YEET, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -1785,7 +1785,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_returnStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitReturnStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitReturnStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1824,9 +1824,9 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PrintStatementContext extends ParserRuleContext {
-		public TerminalNode YO_GURT() { return getToken(Pcl_C4Parser.YO_GURT, 0); }
-		public TerminalNode LPAREN() { return getToken(Pcl_C4Parser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(Pcl_C4Parser.RPAREN, 0); }
+		public TerminalNode YO_GURT() { return getToken(BrainrotParser.YO_GURT, 0); }
+		public TerminalNode LPAREN() { return getToken(BrainrotParser.LPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(BrainrotParser.RPAREN, 0); }
 		public ArgumentListContext argumentList() {
 			return getRuleContext(ArgumentListContext.class,0);
 		}
@@ -1836,7 +1836,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_printStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitPrintStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitPrintStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1888,7 +1888,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_callStatement; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitCallStatement(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitCallStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1922,9 +1922,9 @@ public class Pcl_C4Parser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(Pcl_C4Parser.COMMA); }
+		public List<TerminalNode> COMMA() { return getTokens(BrainrotParser.COMMA); }
 		public TerminalNode COMMA(int i) {
-			return getToken(Pcl_C4Parser.COMMA, i);
+			return getToken(BrainrotParser.COMMA, i);
 		}
 		public ArgumentListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1932,7 +1932,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_argumentList; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitArgumentList(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitArgumentList(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1977,12 +1977,12 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class FunctionCallContext extends ParserRuleContext {
-		public TerminalNode JOHN_PORK() { return getToken(Pcl_C4Parser.JOHN_PORK, 0); }
+		public TerminalNode JOHN_PORK() { return getToken(BrainrotParser.JOHN_PORK, 0); }
 		public IdentifierContext identifier() {
 			return getRuleContext(IdentifierContext.class,0);
 		}
-		public TerminalNode LPAREN() { return getToken(Pcl_C4Parser.LPAREN, 0); }
-		public TerminalNode RPAREN() { return getToken(Pcl_C4Parser.RPAREN, 0); }
+		public TerminalNode LPAREN() { return getToken(BrainrotParser.LPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(BrainrotParser.RPAREN, 0); }
 		public ArgumentListContext argumentList() {
 			return getRuleContext(ArgumentListContext.class,0);
 		}
@@ -1992,7 +1992,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_functionCall; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitFunctionCall(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitFunctionCall(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2055,7 +2055,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2100,25 +2100,25 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class RelationalOperatorContext extends ParserRuleContext {
-		public TerminalNode MOGGING() { return getToken(Pcl_C4Parser.MOGGING, 0); }
-		public TerminalNode MOGGED_BY() { return getToken(Pcl_C4Parser.MOGGED_BY, 0); }
-		public TerminalNode NO_CAP() { return getToken(Pcl_C4Parser.NO_CAP, 0); }
-		public TerminalNode LOWK_MOGGED_BY() { return getToken(Pcl_C4Parser.LOWK_MOGGED_BY, 0); }
-		public TerminalNode LOWK_MOGGING() { return getToken(Pcl_C4Parser.LOWK_MOGGING, 0); }
-		public TerminalNode CAP() { return getToken(Pcl_C4Parser.CAP, 0); }
-		public TerminalNode GT() { return getToken(Pcl_C4Parser.GT, 0); }
-		public TerminalNode LT() { return getToken(Pcl_C4Parser.LT, 0); }
-		public TerminalNode EQ() { return getToken(Pcl_C4Parser.EQ, 0); }
-		public TerminalNode LE() { return getToken(Pcl_C4Parser.LE, 0); }
-		public TerminalNode GE() { return getToken(Pcl_C4Parser.GE, 0); }
-		public TerminalNode NE() { return getToken(Pcl_C4Parser.NE, 0); }
+		public TerminalNode MOGGING() { return getToken(BrainrotParser.MOGGING, 0); }
+		public TerminalNode MOGGED_BY() { return getToken(BrainrotParser.MOGGED_BY, 0); }
+		public TerminalNode NO_CAP() { return getToken(BrainrotParser.NO_CAP, 0); }
+		public TerminalNode LOWK_MOGGED_BY() { return getToken(BrainrotParser.LOWK_MOGGED_BY, 0); }
+		public TerminalNode LOWK_MOGGING() { return getToken(BrainrotParser.LOWK_MOGGING, 0); }
+		public TerminalNode CAP() { return getToken(BrainrotParser.CAP, 0); }
+		public TerminalNode GT() { return getToken(BrainrotParser.GT, 0); }
+		public TerminalNode LT() { return getToken(BrainrotParser.LT, 0); }
+		public TerminalNode EQ() { return getToken(BrainrotParser.EQ, 0); }
+		public TerminalNode LE() { return getToken(BrainrotParser.LE, 0); }
+		public TerminalNode GE() { return getToken(BrainrotParser.GE, 0); }
+		public TerminalNode NE() { return getToken(BrainrotParser.NE, 0); }
 		public RelationalOperatorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_relationalOperator; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitRelationalOperator(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitRelationalOperator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2161,21 +2161,21 @@ public class Pcl_C4Parser extends Parser {
 		public MultiplicativeExpressionContext multiplicativeExpression(int i) {
 			return getRuleContext(MultiplicativeExpressionContext.class,i);
 		}
-		public List<TerminalNode> AURA_GAIN() { return getTokens(Pcl_C4Parser.AURA_GAIN); }
+		public List<TerminalNode> AURA_GAIN() { return getTokens(BrainrotParser.AURA_GAIN); }
 		public TerminalNode AURA_GAIN(int i) {
-			return getToken(Pcl_C4Parser.AURA_GAIN, i);
+			return getToken(BrainrotParser.AURA_GAIN, i);
 		}
-		public List<TerminalNode> AURA_LOSS() { return getTokens(Pcl_C4Parser.AURA_LOSS); }
+		public List<TerminalNode> AURA_LOSS() { return getTokens(BrainrotParser.AURA_LOSS); }
 		public TerminalNode AURA_LOSS(int i) {
-			return getToken(Pcl_C4Parser.AURA_LOSS, i);
+			return getToken(BrainrotParser.AURA_LOSS, i);
 		}
-		public List<TerminalNode> PLUS() { return getTokens(Pcl_C4Parser.PLUS); }
+		public List<TerminalNode> PLUS() { return getTokens(BrainrotParser.PLUS); }
 		public TerminalNode PLUS(int i) {
-			return getToken(Pcl_C4Parser.PLUS, i);
+			return getToken(BrainrotParser.PLUS, i);
 		}
-		public List<TerminalNode> MINUS() { return getTokens(Pcl_C4Parser.MINUS); }
+		public List<TerminalNode> MINUS() { return getTokens(BrainrotParser.MINUS); }
 		public TerminalNode MINUS(int i) {
-			return getToken(Pcl_C4Parser.MINUS, i);
+			return getToken(BrainrotParser.MINUS, i);
 		}
 		public AdditiveExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2183,7 +2183,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_additiveExpression; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitAdditiveExpression(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitAdditiveExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2242,21 +2242,21 @@ public class Pcl_C4Parser extends Parser {
 		public UnaryExpressionContext unaryExpression(int i) {
 			return getRuleContext(UnaryExpressionContext.class,i);
 		}
-		public List<TerminalNode> AURA_FARM() { return getTokens(Pcl_C4Parser.AURA_FARM); }
+		public List<TerminalNode> AURA_FARM() { return getTokens(BrainrotParser.AURA_FARM); }
 		public TerminalNode AURA_FARM(int i) {
-			return getToken(Pcl_C4Parser.AURA_FARM, i);
+			return getToken(BrainrotParser.AURA_FARM, i);
 		}
-		public List<TerminalNode> CHOPPED_CHEESE() { return getTokens(Pcl_C4Parser.CHOPPED_CHEESE); }
+		public List<TerminalNode> CHOPPED_CHEESE() { return getTokens(BrainrotParser.CHOPPED_CHEESE); }
 		public TerminalNode CHOPPED_CHEESE(int i) {
-			return getToken(Pcl_C4Parser.CHOPPED_CHEESE, i);
+			return getToken(BrainrotParser.CHOPPED_CHEESE, i);
 		}
-		public List<TerminalNode> STAR() { return getTokens(Pcl_C4Parser.STAR); }
+		public List<TerminalNode> STAR() { return getTokens(BrainrotParser.STAR); }
 		public TerminalNode STAR(int i) {
-			return getToken(Pcl_C4Parser.STAR, i);
+			return getToken(BrainrotParser.STAR, i);
 		}
-		public List<TerminalNode> SLASH() { return getTokens(Pcl_C4Parser.SLASH); }
+		public List<TerminalNode> SLASH() { return getTokens(BrainrotParser.SLASH); }
 		public TerminalNode SLASH(int i) {
-			return getToken(Pcl_C4Parser.SLASH, i);
+			return getToken(BrainrotParser.SLASH, i);
 		}
 		public MultiplicativeExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2264,7 +2264,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_multiplicativeExpression; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitMultiplicativeExpression(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitMultiplicativeExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2320,8 +2320,8 @@ public class Pcl_C4Parser extends Parser {
 		public UnaryExpressionContext unaryExpression() {
 			return getRuleContext(UnaryExpressionContext.class,0);
 		}
-		public TerminalNode PLUS() { return getToken(Pcl_C4Parser.PLUS, 0); }
-		public TerminalNode MINUS() { return getToken(Pcl_C4Parser.MINUS, 0); }
+		public TerminalNode PLUS() { return getToken(BrainrotParser.PLUS, 0); }
+		public TerminalNode MINUS() { return getToken(BrainrotParser.MINUS, 0); }
 		public PrimaryExpressionContext primaryExpression() {
 			return getRuleContext(PrimaryExpressionContext.class,0);
 		}
@@ -2331,7 +2331,7 @@ public class Pcl_C4Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_unaryExpression; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitUnaryExpression(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitUnaryExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2390,26 +2390,26 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class PrimaryExpressionContext extends ParserRuleContext {
-		public TerminalNode INTEGER() { return getToken(Pcl_C4Parser.INTEGER, 0); }
-		public TerminalNode STRING() { return getToken(Pcl_C4Parser.STRING, 0); }
+		public TerminalNode INTEGER() { return getToken(BrainrotParser.INTEGER, 0); }
+		public TerminalNode STRING() { return getToken(BrainrotParser.STRING, 0); }
 		public FunctionCallContext functionCall() {
 			return getRuleContext(FunctionCallContext.class,0);
 		}
 		public IdentifierContext identifier() {
 			return getRuleContext(IdentifierContext.class,0);
 		}
-		public TerminalNode LPAREN() { return getToken(Pcl_C4Parser.LPAREN, 0); }
+		public TerminalNode LPAREN() { return getToken(BrainrotParser.LPAREN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode RPAREN() { return getToken(Pcl_C4Parser.RPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(BrainrotParser.RPAREN, 0); }
 		public PrimaryExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_primaryExpression; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitPrimaryExpression(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitPrimaryExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2477,14 +2477,14 @@ public class Pcl_C4Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class IdentifierContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(Pcl_C4Parser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(BrainrotParser.IDENTIFIER, 0); }
 		public IdentifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifier; }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Pcl_C4Visitor ) return ((Pcl_C4Visitor<? extends T>)visitor).visitIdentifier(this);
+			if ( visitor instanceof BrainrotVisitor ) return ((BrainrotVisitor<? extends T>)visitor).visitIdentifier(this);
 			else return visitor.visitChildren(this);
 		}
 	}

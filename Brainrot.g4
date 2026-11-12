@@ -1,4 +1,4 @@
-grammar Pcl_C4;
+grammar Brainrot;
 
 @header {
     package intermediate.antlr4;
