@@ -25,6 +25,9 @@ public class SyntaxErrorHandler extends BaseErrorListener
         }
         
         count++;
+        msg = msg.replace("'\\n'", "end of line")
+                 .replace("'\\r\\n'", "end of line")
+                 .replace("<EOF>", "end of file");
         System.out.printf("%03d  %-35s\n", line, msg);
     }
 }

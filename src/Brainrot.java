@@ -11,15 +11,15 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import frontend.Listing;
 import frontend.SyntaxErrorHandler;
-import intermediate.antlr4.Pcl_C4Parser;
-import intermediate.antlr4.Pcl_C4Lexer;
+import intermediate.antlr4.BrainrotParser;
+import intermediate.antlr4.BrainrotLexer;
 import intermediate.semantics.Semantics;
 import backend.BackendMode;
 import backend.compiler.Compiler;
 
 import static backend.BackendMode.Mode.*;
 
-public class Pcl_C4 
+public class Brainrot 
 {
     public static void main(String[] args) throws Exception 
     {
@@ -58,11 +58,11 @@ public class Pcl_C4
 
         System.out.printf("\nPASS 1 Syntax:\n");
         
-        Pcl_C4Lexer lexer = new Pcl_C4Lexer(cs);
+        BrainrotLexer lexer = new BrainrotLexer(cs);
         lexer.removeErrorListeners();
         lexer.addErrorListener(syntaxErrorHandler);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        Pcl_C4Parser parser = new Pcl_C4Parser(tokens);
+        BrainrotParser parser = new BrainrotParser(tokens);
 
         parser.removeErrorListeners();
         parser.addErrorListener(syntaxErrorHandler);
@@ -111,7 +111,7 @@ public class Pcl_C4
 
             case COMPILER:
             {
-                // Compile the Pascal program.
+                // Compile the source program.
                 System.out.printf("\nPASS 3 Compilation: ");
                 Compiler pass3 = new Compiler();
                 pass3.visit(tree);

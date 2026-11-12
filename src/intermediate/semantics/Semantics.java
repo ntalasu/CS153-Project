@@ -8,9 +8,9 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import intermediate.antlr4.Pcl_C4BaseVisitor;
-import intermediate.antlr4.Pcl_C4Parser;
-import intermediate.antlr4.Pcl_C4Parser.*;
+import intermediate.antlr4.BrainrotBaseVisitor;
+import intermediate.antlr4.BrainrotParser;
+import intermediate.antlr4.BrainrotParser.*;
 import intermediate.symtab.Predefined;
 import intermediate.symtab.Symtab;
 import intermediate.symtab.SymtabEntry;
@@ -38,7 +38,7 @@ import static intermediate.symtab.SymtabEntry.Kind.*;
  *         result of a comparison -> Predefined.booleanType (only usable as
  *         a condition or printed; the language has no boolean variables)
  */
-public class Semantics extends Pcl_C4BaseVisitor<Object>
+public class Semantics extends BrainrotBaseVisitor<Object>
 {
     public static SymtabEntry programEntry;   // the "quandale dingle" class
     public static SymtabEntry mainEntry;      // the "tung tung sahur" method
@@ -713,13 +713,13 @@ public class Semantics extends Pcl_C4BaseVisitor<Object>
 
     private static boolean isPlus(int op)
     {
-        return (op == Pcl_C4Parser.AURA_GAIN) || (op == Pcl_C4Parser.PLUS);
+        return (op == BrainrotParser.AURA_GAIN) || (op == BrainrotParser.PLUS);
     }
 
     private static boolean isEqualityOp(int op)
     {
-        return (op == Pcl_C4Parser.NO_CAP) || (op == Pcl_C4Parser.EQ)
-                || (op == Pcl_C4Parser.CAP)    || (op == Pcl_C4Parser.NE);
+        return (op == BrainrotParser.NO_CAP) || (op == BrainrotParser.EQ)
+                || (op == BrainrotParser.CAP)    || (op == BrainrotParser.NE);
     }
 
     private static Typespec valueTypeOf(ValueTypeContext ctx)

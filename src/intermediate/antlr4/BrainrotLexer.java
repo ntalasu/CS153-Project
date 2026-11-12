@@ -1,4 +1,4 @@
-// Generated from Pcl_C4.g4 by ANTLR 4.13.2
+// Generated from Brainrot.g4 by ANTLR 4.13.2
 
     package intermediate.antlr4;
 
@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
-public class Pcl_C4Lexer extends Lexer {
+public class BrainrotLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -108,13 +108,13 @@ public class Pcl_C4Lexer extends Lexer {
 	}
 
 
-	public Pcl_C4Lexer(CharStream input) {
+	public BrainrotLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Pcl_C4.g4"; }
+	public String getGrammarFileName() { return "Brainrot.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

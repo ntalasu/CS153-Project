@@ -234,7 +234,7 @@ public class Typespec
     { 
         recordPath.add(name);
         ((RecordInfo) info).path = generateRecordPath();
-        recordPath.removeLast();
+        recordPath.remove(recordPath.size() - 1);
     }
     
     public static void addRecordPath(String name) 

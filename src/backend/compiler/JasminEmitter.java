@@ -3,7 +3,7 @@ package backend.compiler;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import intermediate.antlr4.Pcl_C4Parser.*;
+import intermediate.antlr4.BrainrotParser.*;
 import intermediate.symtab.SymtabEntry;
 import intermediate.symtab.SymtabEntry.Kind;
 import intermediate.type.Typespec;
@@ -769,37 +769,37 @@ public class JasminEmitter
     }
 
     /**
-     * Return a type descriptor for a Pascal datatype.
-     * @param pascalTypespec the datatype.
+     * Return a type descriptor for a source datatype.
+     * @param sourceType the datatype.
      * @return the type descriptor.
      */
-    public String typeDescriptor(Typespec pascalTypespec)
+    public String typeDescriptor(Typespec sourceType)
     {
-        Form form = pascalTypespec.getForm();
+        Form form = sourceType.getForm();
         StringBuffer buffer = new StringBuffer();
 
         while (form == ARRAY) 
         {
             buffer.append("[");
-            pascalTypespec =  pascalTypespec.getArrayElementType();
-            form = pascalTypespec.getForm();
+            sourceType =  sourceType.getArrayElementType();
+            form = sourceType.getForm();
         }
 
-        pascalTypespec = pascalTypespec.baseType();
+        sourceType = sourceType.baseType();
         String str;
 
-        if      (pascalTypespec == integerType) str = "I";
-        else if (pascalTypespec == realType)    str = "D";
-        else if (pascalTypespec == booleanType) str = "Z";
-        else if (pascalTypespec == charType)    str = "C";
-        else if (pascalTypespec == stringType)  
+        if      (sourceType == integerType) str = "I";
+        else if (sourceType == realType)    str = "D";
+        else if (sourceType == booleanType) str = "Z";
+        else if (sourceType == charType)    str = "C";
+        else if (sourceType == stringType)  
         {
             str = "Ljava/lang/String;";
         }
         else if (form == ENUMERATED) str = "I";
         else if (form == RECORD)   
         {
-            str = "L" + pascalTypespec.getRecordPath() + ";";
+            str = "L" + sourceType.getRecordPath() + ";";
         }
         else str = "*unknown*"; 
 
@@ -808,43 +808,43 @@ public class JasminEmitter
     }
 
     /**
-     * Return the Java object name for a Pascal datatype.
-     * @param pascalTypespec the datatype.
+     * Return the Java object name for a source datatype.
+     * @param sourceType the datatype.
      * @return the object name.
      */
-    private String objectTypeName(Typespec pascalTypespec)
+    private String objectTypeName(Typespec sourceType)
     {
-        Form form = pascalTypespec.getForm();
+        Form form = sourceType.getForm();
         StringBuffer buffer = new StringBuffer();
         boolean isArray = false;
 
         while (form == ARRAY) 
         {
             buffer.append("[");
-            pascalTypespec = pascalTypespec.getArrayElementType();
-            form = pascalTypespec.getForm();
+            sourceType = sourceType.getArrayElementType();
+            form = sourceType.getForm();
             isArray = true;
         }
 
         if (isArray) buffer.append("L");
 
-        pascalTypespec = pascalTypespec.baseType();
+        sourceType = sourceType.baseType();
         String str;
 
-        if (pascalTypespec == integerType)
+        if (sourceType == integerType)
             str = "java/lang/Integer";               
-        else if (pascalTypespec == realType)    
+        else if (sourceType == realType)    
             str = "java/lang/Double";
-        else if (pascalTypespec == booleanType) 
+        else if (sourceType == booleanType) 
             str = "java/lang/Boolean";
-        else if (pascalTypespec == charType)    
+        else if (sourceType == charType)    
             str = "java/lang/Character";
-        else if (pascalTypespec == stringType)  
+        else if (sourceType == stringType)  
             str = "Ljava/lang/String;";
         else if (form == ENUMERATED)                       
             str = "java/lang/Integer";               
         else if (form == RECORD)                       
-            str = "L" + pascalTypespec.getRecordPath() + ";";
+            str = "L" + sourceType.getRecordPath() + ";";
         else                                           
             str = "*unknown*";               
         
@@ -905,13 +905,13 @@ public class JasminEmitter
     }
     
     /**
-     * Convert a Pascal string to a Java string.
-     * @param pascalString the Pascal string.
+     * Convert a source string to a Java string.
+     * @param sourceString the source string.
      * @return the Java string.
      */
-    public String convertString(String pascalString)
+    public String convertString(String sourceString)
     {
-        String unquoted = pascalString.substring(1, pascalString.length()-1);
+        String unquoted = sourceString.substring(1, sourceString.length()-1);
         return unquoted.replace("''", "'").replace("\"", "\\\"");
     }
 }
