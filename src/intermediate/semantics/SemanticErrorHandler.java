@@ -33,6 +33,12 @@ public class SemanticErrorHandler
         INVALID_RETURN_TYPE        ("Invalid function return type"),
         INVALID_FIELD              ("Invalid field"),
         INVALID_MODIFIER           ("Invalid field or subscript"),
+        // Brainrot-specific
+        ASSIGN_TO_CONSTANT         ("Can't reassign a 24k gold labubu"),
+        BREAK_OUTSIDE_LOOP         ("ohio/tonka jahari outside a loop"),
+        RETURN_VALUE_IN_VOID       ("sigma function can't yeet a value"),
+        MISSING_RETURN_VALUE       ("Function must yeet a value"),
+        VOID_IN_EXPRESSION         ("sigma function has no value"),
         ;
         
         private String message;

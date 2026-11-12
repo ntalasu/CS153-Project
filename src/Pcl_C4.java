@@ -15,8 +15,6 @@ import intermediate.antlr4.Pcl_C4Parser;
 import intermediate.antlr4.Pcl_C4Lexer;
 import intermediate.semantics.Semantics;
 import backend.BackendMode;
-import backend.converter.Converter;
-import backend.interpreter.Executor;
 import backend.compiler.Compiler;
 
 import static backend.BackendMode.Mode.*;
@@ -104,24 +102,10 @@ public class Pcl_C4
         switch (BackendMode.mode)
         {
             case CONVERTER:
-            {
-                // Convert from Pascal to Java.
-                System.out.printf("\nPASS 3 Convert to Java: ");
-                Converter pass3 = new Converter();
-                pass3.visit(tree);
-                
-                System.out.printf("Converted file \"%s\" created.\n",
-                                  pass3.getObjectFileName());
-                break;
-            }
-                
             case EXECUTOR:
             case DEBUGGER:
             {
-                // Execute the Pascal program.
-                System.out.printf("\nPASS 3 Execution:\n\n");
-                Executor pass3 = new Executor();
-                pass3.visit(tree);
+                System.out.println("\nOnly -compile is implemented so far.");
                 break;
             }
 

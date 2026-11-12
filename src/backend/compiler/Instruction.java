@@ -61,6 +61,7 @@ public enum Instruction
     INVOKESTATIC(0), INVOKESPECIAL(0), 
     INVOKEVIRTUAL(0), INVOKENONVIRTUAL(0),
     RETURN(0), IRETURN(-1), DRETURN(-2), ARETURN(-1),
+    ATHROW(-1),
 
     // No operation
     NOP(0);

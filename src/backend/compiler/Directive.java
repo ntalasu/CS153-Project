@@ -24,7 +24,8 @@ public enum Directive
     LIMIT_LOCALS(".limit locals"),
     LIMIT_STACK(".limit stack"),
     VAR(".var"),
-    LINE(".line");
+    LINE(".line"),
+    CATCH(".catch");
 
     private String text;
 

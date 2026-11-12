@@ -89,8 +89,8 @@ assignmentOperator
 
 ifStatement
     : SIX LPAREN expression RPAREN COLON block
-      (SEVEN SIX LPAREN expression RPAREN COLON block)*
-      (SEVEN COLON block)?
+      (separator* SEVEN SIX LPAREN expression RPAREN COLON block)*
+      (separator* SEVEN COLON block)?
     ;
 
 whileStatement

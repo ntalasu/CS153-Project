@@ -52,15 +52,15 @@ public class Symtab extends TreeMap<String, SymtabEntry>
     public SymtabEntry enter(String name, Kind kind) 
     { 
         SymtabEntry entry = new SymtabEntry(name, kind, this);
-        put(name.toLowerCase(), entry);
+        put(name, entry);
         unsorted.add(entry);
         
         return entry;
     }
     
     public SymtabEntry lookup(String name) 
-    { 
-        return get(name.toLowerCase()); 
+    {
+        return get(name);
     }
     
     /**
