@@ -1,0 +1,28 @@
+quandale dingle PassByValue:
+
+mewing the parameter is a copy, so changing it here can't touch the caller's variable
+rizz sigma glowUp(dabloons aura, chat name):
+    aura is giving aura aura gain 1000
+    name is giving name aura gain " (glowed up)"
+    yo gurt("inside glowUp:", name, "has", aura, "aura")
+    yeet
+fade
+
+rizz dabloons doubled(dabloons n):
+    n is giving n aura farm 2
+    yeet n
+fade
+
+tung tung sahur:
+    bet dabloons aura is giving 67
+    bet chat name is giving "quandale"
+
+    john pork glowUp(aura, name)
+    yo gurt("after glowUp:", name, "has", aura, "aura")
+
+    mewing to keep a change, return it and assign it
+    aura is giving john pork doubled(aura)
+    yo gurt("after doubled:", aura)
+fade
+
+thank you thank you thank you

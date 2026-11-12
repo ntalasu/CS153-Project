@@ -45,6 +45,12 @@ The compiler prints a source listing, then runs its passes. The `.j` file is nam
 |---|---|
 | `examples/Factorial.br` | Recursion, both data types, precedence, if / else if / else, while and for loops, break and continue, constants |
 | `examples/Misc.br` | Nested loops, string escapes, a function declared after main, `skibidi` (exit) |
+| `examples/PassByValue.br` | Parameters passed by value: a function changes its copies, and the caller's variables stay the same |
+| `examples/FizzBuzz.br` | A modulo helper function and a full if / else if / else chain |
+| `examples/Primes.br` | Nested for loops, early `yeet`, `tonka jahari` (continue), a constant |
+| `examples/Collatz.br` | While loop with `cap` (not equal), tracking a running best |
+| `examples/Digits.br` | Digit arithmetic, recursion, a function that returns a `chat` |
+| `examples/Pattern.br` | String building with `aura gain` and nested function calls |
 | `examples/ElseNewline.br` | `seven` (else) on its own line |
 | `examples/Skibidi.br` | Runtime error when a function ends without returning a value |
 | `examples/DivZero.br` | Runtime error on division by zero |
